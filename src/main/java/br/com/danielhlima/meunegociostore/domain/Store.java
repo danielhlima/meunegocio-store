@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.danielhlima.meunegociostore.domain.enums.StoreProfile;
 
 @Entity
@@ -46,11 +48,11 @@ public class Store implements Serializable{
 	@Size(min = 10, max = 250, message="O texto de descrição da loja deve ter entre 10 e 50 caracteres")
 	private String desctiption;
 	
-	@Column(unique=true)
 	private Integer userId;
 	
 	private boolean active;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="store")
 	private List<Product> products;
 
