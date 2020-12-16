@@ -30,6 +30,13 @@ public class CustomExceptionEntityResponseHandler extends ResponseEntityExceptio
 		return new ResponseEntity<Object>(exceptionResponse, HttpStatus.NOT_FOUND);
 	}
 	
+	@ExceptionHandler(ProductsFromStoreNotFound.class)
+	public final ResponseEntity<Object> handleProductsFromStoreNotFoundException(ProductsFromStoreNotFound ex, WebRequest request){
+		
+		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
+		return new ResponseEntity<Object>(exceptionResponse, HttpStatus.NOT_FOUND);
+	}
+	
 	@ExceptionHandler(StoreNotFoundException.class)
 	public final ResponseEntity<Object> handleStoreNotFoundException(StoreNotFoundException ex, WebRequest request){
 		

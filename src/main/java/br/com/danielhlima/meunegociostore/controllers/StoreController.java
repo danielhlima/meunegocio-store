@@ -43,14 +43,13 @@ public class StoreController {
 				.fromCurrentRequest()
 				.path("/{id}")
 				.buildAndExpand(savedStore.getId()).toUri();
-		
 		return ResponseEntity.created(location).build();
 		
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Store> retrieveStore(@PathVariable int id) {
-		Store store =  storeService.findById(id);
+		Store store =  storeService.findById(id);	
 		return ResponseEntity.ok().body(store);
 	}
 }
